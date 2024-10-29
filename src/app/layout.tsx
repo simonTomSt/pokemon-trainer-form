@@ -1,23 +1,23 @@
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import CssBaseline from '@mui/material/CssBaseline';
-import localFont from 'next/font/local';
 import theme from '@/lib/theme';
 
 const ibmVga = localFont({
   src: './fonts/IBM_VGA.woff',
   variable: '--font-ibm-vga',
-  weight: '400',
+  weight: '400'
 });
 
 export const metadata: Metadata = {
   title: 'Pokemon Trainer Registration Form',
-  description: 'Pokemon Trainer Registration Form application',
+  description: 'Pokemon Trainer Registration Form application'
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
