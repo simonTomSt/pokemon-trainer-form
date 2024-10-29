@@ -1,13 +1,6 @@
 import '@mui/material/styles/createPalette';
 
 declare module '@mui/material/styles' {
-  interface Palette {
-    surface: Palette['primary'];
-  }
-  interface PaletteOptions {
-    surface: PaletteOptions['primary'];
-  }
-
   interface Theme {
     boxShadow: {
       purple: string;

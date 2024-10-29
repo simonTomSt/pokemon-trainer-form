@@ -1,3 +1,4 @@
+import { colors } from '@mui/material';
 import MUIButton from '@mui/material/Button';
 import { styled, css, type Theme } from '@mui/material/styles';
 
@@ -26,7 +27,7 @@ export const Button = styled(MUIButton)<{ color?: ColorProp }>(
 const colorStyles = (theme: Theme) => ({
   primary: css`
     background-color: ${theme.palette.primary.main};
-    color: ${theme.palette.surface.main};
+    color: ${colors.common.white};
 
     &:hover,
     &:focus-visible,

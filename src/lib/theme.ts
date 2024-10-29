@@ -4,7 +4,12 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
   cssVariables: true,
   typography: {
-    fontFamily: 'var(--font-ibm-vga)'
+    fontFamily: 'var(--font-ibm-vga)',
+    subtitle1: {
+      fontSize: '12px',
+      fontWeight: 400,
+      lineHeight: '20px'
+    }
   },
   palette: {
     primary: {
@@ -20,9 +25,6 @@ const theme = createTheme({
       200: '#7F7F7F',
       300: '#E4E4E4',
       400: '#EEEEEE'
-    },
-    surface: {
-      main: '#FFFFFF'
     }
   },
   boxShadow: {
