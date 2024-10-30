@@ -1,8 +1,8 @@
-import { getPokemonDetails } from '@/lib/api/pokemon/get-pokemon-details';
-import { Chip } from '@/lib/components/chip';
+import Image from 'next/image';
 import { Box, Grid2, Typography } from '@mui/material';
 import { useQuery } from '@tanstack/react-query';
-import Image from 'next/image';
+import { getPokemonDetails } from '@/lib/api/pokemon/get-pokemon-details';
+import { Chip } from '@/lib/components/chip';
 
 type Props = {
   pokemonId: string;
