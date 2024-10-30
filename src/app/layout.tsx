@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import QueryProvider from '@/lib/components/query-provider';
 import theme from '@/lib/theme';
 
 const ibmVga = localFont({
@@ -24,12 +25,14 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`${ibmVga.variable} ${ibmVga.variable}`}>
-        <AppRouterCacheProvider>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {children}
-          </ThemeProvider>
-        </AppRouterCacheProvider>
+        <QueryProvider>
+          <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+              <CssBaseline />
+              {children}
+            </ThemeProvider>
+          </AppRouterCacheProvider>
+        </QueryProvider>
       </body>
     </html>
   );
