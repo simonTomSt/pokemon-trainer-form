@@ -8,7 +8,7 @@ type Props = {
   pokemonId: string;
 };
 export const PokemonDetails = ({ pokemonId = '' }: Props) => {
-  const { data } = useQuery({
+  const { data, isError, error } = useQuery({
     queryKey: ['pokemon-details', pokemonId],
     queryFn: () => getPokemonDetails(pokemonId),
     enabled: !!pokemonId.length,
@@ -38,7 +38,9 @@ export const PokemonDetails = ({ pokemonId = '' }: Props) => {
           top='50%'
           sx={{ transform: 'translate(-50%, -50%)' }}
         >
-          Your pokemon
+          {!isError
+            ? 'Your pokemon'
+            : error?.message || "Couldn't fetch the pokemon, try again"}
         </Typography>
       ) : (
         <Grid2 container>

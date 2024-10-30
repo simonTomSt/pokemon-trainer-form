@@ -22,7 +22,8 @@ export const PokemonAutocomplete = ({ error, onValueSelect }: Props) => {
     enabled: !!pokemonName.length,
     refetchOnWindowFocus: false,
     refetchOnMount: false,
-    refetchOnReconnect: false
+    refetchOnReconnect: false,
+    throwOnError: true
   });
 
   return (
