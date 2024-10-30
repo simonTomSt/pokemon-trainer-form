@@ -1,57 +1,95 @@
 'use client';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Grid2 } from '@mui/material';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { Autocomplete } from '@/lib/components/autocomplete';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 import { Button } from '@/lib/components/button';
 import { Input } from '@/lib/components/input';
 import { Label } from '@/lib/components/label';
 import { Paper } from '@/lib/components/paper';
+import { PokemonAutocomplete } from './pokemon-autocomplete';
+import { PokemonDetails } from './pokemon-details';
+import { SuccessModal } from './success-modal';
+
+const schema = () =>
+  z.object({
+    name: z
+      .string({ message: 'Field is required' })
+      .min(2, 'Required from 2 to 20 symbols')
+      .max(20, 'Required from 2 to 20 symbols'),
+    age: z
+      .number({ message: 'Field is required' })
+      .min(16, 'Required range from 16-99')
+      .max(99, 'Required range from 16-99'),
+    pokemonId: z
+      .string({ message: 'Field is required' })
+      .min(1, 'Field is required')
+  });
+
+type FormValues = z.infer<ReturnType<typeof schema>>;
 
 export const TrainerForm = () => {
-  const pokemons = [
-    { label: 'The Godfather', id: '1' },
-    { label: 'Pulp Fiction', id: '2' }
-  ];
+  const form = useForm<FormValues>({
+    resolver: zodResolver(schema())
+  });
+  const pokemonId = form.watch('pokemonId');
+
+  const onSubmit = (data: FormValues) => {
+    // Here we would make some API mutation
+    console.log(data);
+  };
 
   return (
-    <Box display='grid' gap='24px' width='100%'>
-      <Typography variant='subtitle1' ml='auto'>
-        Wednesday, 06.03.2024
-      </Typography>
-
-      <Grid2 container columnSpacing='24px'>
-        <Grid2 size={6}>
-          <Label htmlFor='name'>Trainer&apos;s name</Label>
-          <Input id='name' name='name' placeholder="Trainer's name" />
+    <form onSubmit={form.handleSubmit(onSubmit)}>
+      <Box display='grid' gap='24px' width='100%'>
+        <Grid2 container columnSpacing='24px'>
+          <Grid2 size={6}>
+            <Label htmlFor='name'>Trainer&apos;s name</Label>
+            <Input
+              id='name'
+              placeholder="Trainer's name"
+              error={!!form.formState.errors.name}
+              helperText={form.formState.errors.name?.message}
+              {...form.register('name')}
+            />
+          </Grid2>
+          <Grid2 size={6}>
+            <Label htmlFor='age'>Trainer&apos;s age</Label>
+            <Input
+              type='number'
+              id='age'
+              placeholder="Trainer's age"
+              error={!!form.formState.errors.age}
+              helperText={form.formState.errors.age?.message}
+              {...form.register('age', { valueAsNumber: true })}
+            />
+          </Grid2>
         </Grid2>
-        <Grid2 size={6}>
-          <Label htmlFor='age'>Trainer&apos;s age</Label>
-          <Input
-            type='number'
-            id='age'
-            name='age'
-            placeholder="Trainer's age"
-          />
-        </Grid2>
-      </Grid2>
 
-      <Box>
-        <Label htmlFor='pokemon'>Pokemon name</Label>
-        <Autocomplete
-          options={pokemons}
-          renderInput={(params) => (
-            <Input name='pokemon' placeholder='Pokemon name' {...params} />
-          )}
+        <PokemonAutocomplete
+          error={form.formState.errors.pokemonId?.message}
+          onValueSelect={(v) => form.setValue('pokemonId', v)}
         />
+
+        <Paper sx={{ height: '254px' }}>
+          <PokemonDetails pokemonId={pokemonId} />
+        </Paper>
+
+        <Box display='flex' gap='16px' ml='auto'>
+          <Button color='soft' type='reset'>
+            Reset
+          </Button>
+          <Button type='submit' color='primary'>
+            Submit
+          </Button>
+        </Box>
       </Box>
 
-      <Paper sx={{ height: '254px' }}></Paper>
-
-      <Box display='flex' gap='16px' ml='auto'>
-        <Button color='soft'>Reset</Button>
-        <Button color='primary'>Submit</Button>
-      </Box>
-    </Box>
+      <SuccessModal
+        open={form.formState.isSubmitSuccessful}
+        onClose={() => form.reset()}
+      />
+    </form>
   );
 };

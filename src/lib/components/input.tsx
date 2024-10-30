@@ -33,5 +33,10 @@ export const Input = styled(MUITextField)(
         border: 1px solid ${theme.palette.primary.main};
       }
     }
+
+    .MuiFormHelperText-root {
+      box-shadow: none;
+      margin: 2px 0 0 0;
+    }
   `
 );
