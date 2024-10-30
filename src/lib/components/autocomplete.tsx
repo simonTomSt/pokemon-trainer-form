@@ -21,9 +21,14 @@ const Loading = styled(Spinner)`
   }
 `;
 export const StyledAutocomplete = styled(MUIAutocomplete)(
-  () => css`
+  ({ theme }) => css`
     div.MuiInputBase-root {
       padding: 0;
+      border: 1px solid ${theme.palette.grey[400]};
+
+      &:hover {
+        border: 1px solid ${theme.palette.primary.main};
+      }
     }
 
     input {

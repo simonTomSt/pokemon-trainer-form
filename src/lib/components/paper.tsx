@@ -6,6 +6,6 @@ export const Paper = styled(MUIPaper)(
   ({ theme }) => css`
     border-radius: 2px;
     border: 1px solid ${theme.palette.grey[400]};
-    box-shadow: ${theme.boxShadow.grey};
+    box-shadow: none;
   `
 );

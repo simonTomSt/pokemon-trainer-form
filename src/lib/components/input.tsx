@@ -13,7 +13,13 @@ export const Input = styled(MUITextField)(
       box-shadow: ${theme.boxShadow.purple};
     }
 
+    fieldset {
+      border: 0;
+      box-shadow: none;
+    }
+
     .MuiInputBase-input {
+      border-radius: 2px;
       padding: 10px 12px;
       font-size: ${theme.typography.body1.fontSize};
       line-height: ${theme.typography.body1.lineHeight};
@@ -21,6 +27,10 @@ export const Input = styled(MUITextField)(
 
       &::placeholder {
         color: ${theme.palette.grey[200]};
+      }
+
+      &:hover {
+        border: 1px solid ${theme.palette.primary.main};
       }
     }
   `

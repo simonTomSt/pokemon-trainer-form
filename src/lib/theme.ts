@@ -40,6 +40,9 @@ const theme = createTheme({
       200: '#7F7F7F',
       300: '#E4E4E4',
       400: '#EEEEEE'
+    },
+    text: {
+      primary: '#2A2A2A'
     }
   },
   boxShadow: {
@@ -59,6 +62,20 @@ const theme = createTheme({
         root: {
           '&.MuiInputBase-sizeMedium': {
             height: '48px'
+          }
+        }
+      }
+    },
+    MuiAutocomplete: {
+      styleOverrides: {
+        paper: {
+          boxShadow: '0px 4px 10px 2px rgba(0, 0, 0, 0.1)'
+        }
+      },
+      defaultProps: {
+        slotProps: {
+          paper: {
+            elevation: 0
           }
         }
       }
