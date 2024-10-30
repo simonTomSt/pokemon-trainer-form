@@ -27,7 +27,7 @@ const ModalContent = styled(Box)(
   `
 );
 
-export const SuccessModal = ({ open, onClose }: Props) => {
+const SuccessModal = ({ open, onClose }: Props) => {
   return (
     <Modal
       open={open}
@@ -49,3 +49,5 @@ export const SuccessModal = ({ open, onClose }: Props) => {
     </Modal>
   );
 };
+
+export default SuccessModal;

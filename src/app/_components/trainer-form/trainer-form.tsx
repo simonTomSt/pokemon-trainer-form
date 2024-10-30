@@ -10,7 +10,9 @@ import { Label } from '@/lib/components/label';
 import { Paper } from '@/lib/components/paper';
 import { PokemonAutocomplete } from './pokemon-autocomplete';
 import { PokemonDetails } from './pokemon-details';
-import { SuccessModal } from './success-modal';
+import dynamic from 'next/dynamic';
+
+const SuccessModal = dynamic(() => import('./success-modal'));
 
 const schema = () =>
   z.object({
