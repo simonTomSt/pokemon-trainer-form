@@ -1,3 +1,4 @@
+'use client';
 import MUIPaper from '@mui/material/Paper';
 import { styled, css } from '@mui/material/styles';
 

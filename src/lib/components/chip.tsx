@@ -1,3 +1,4 @@
+'use client';
 import { colors } from '@mui/material';
 import MUIChip from '@mui/material/Chip';
 import { styled, css } from '@mui/material/styles';

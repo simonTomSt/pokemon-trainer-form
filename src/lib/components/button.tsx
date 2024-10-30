@@ -1,3 +1,4 @@
+'use client';
 import { colors } from '@mui/material';
 import MUIButton from '@mui/material/Button';
 import { styled, css, type Theme } from '@mui/material/styles';
@@ -8,9 +9,11 @@ export const Button = styled(MUIButton)<{ color?: ColorProp }>(
   ({ theme, color = 'primary' }) => css`
     border-radius: 2px;
     padding: 10px 24px;
-    font-size: 14px;
     font-weight: 400;
-    line-height: 20px;
+    font-size: ${theme.typography.body1.fontSize};
+    line-height: ${theme.typography.body1.lineHeight};
+    text-transform: capitalize;
+    transition: background-color 300ms ease-in;
 
     &:focus-visible {
       box-shadow: ${theme.boxShadow.purple};

@@ -5,10 +5,25 @@ const theme = createTheme({
   cssVariables: true,
   typography: {
     fontFamily: 'var(--font-ibm-vga)',
+    body1: {
+      fontSize: '14px',
+      fontWeight: 400,
+      lineHeight: '20px'
+    },
+    body2: {
+      fontSize: '12px',
+      fontWeight: 400,
+      lineHeight: '20px'
+    },
     subtitle1: {
       fontSize: '12px',
       fontWeight: 400,
       lineHeight: '20px'
+    },
+    subtitle2: {
+      fontSize: '10px',
+      fontWeight: 400,
+      lineHeight: '16px'
     }
   },
   palette: {
@@ -37,6 +52,15 @@ const theme = createTheme({
         disableRipple: true,
         disableElevation: true,
         variant: 'contained'
+      }
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        root: {
+          '&.MuiInputBase-sizeMedium': {
+            height: '48px'
+          }
+        }
       }
     }
   }
