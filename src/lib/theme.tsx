@@ -1,4 +1,5 @@
 'use client';
+import Box from '@mui/material/Box';
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -9,6 +10,11 @@ const theme = createTheme({
       fontSize: '14px',
       fontWeight: 400,
       lineHeight: '20px'
+    },
+    h3: {
+      fontSize: '40px',
+      fontWeight: 400,
+      lineHeight: '40px'
     },
     body2: {
       fontSize: '12px',
@@ -68,6 +74,21 @@ const theme = createTheme({
     },
     MuiAutocomplete: {
       styleOverrides: {
+        root: {
+          // Customize the input base
+          '& .MuiInputBase-root': {
+            padding: 0,
+            border: `1px solid var(--mui-palette-grey-400)`,
+            '&:hover': {
+              borderColor: 'var(--mui-palette-primary-main)'
+            }
+          },
+          '& input': {
+            width: '100%',
+            border: '0 !important',
+            padding: '10px 12px !important'
+          }
+        },
         paper: {
           boxShadow: '0px 4px 10px 2px rgba(0, 0, 0, 0.1)'
         }
@@ -77,6 +98,32 @@ const theme = createTheme({
           paper: {
             elevation: 0
           }
+        },
+        renderOption: (props, option, state, ownerState) => {
+          const { key, ...optionProps } = props;
+          return (
+            <Box
+              key={key}
+              sx={{
+                borderRadius: '0px',
+                padding: '4px 12px',
+                height: '36px',
+                backgroundColor: 'transparent !important',
+                ...theme.typography.body1,
+                '&:hover': {
+                  backgroundColor: theme.palette.primary.light + '!important'
+                },
+                ...(state.selected && {
+                  color: theme.palette.primary.main + '!important',
+                  backgroundColor: 'transparent !important'
+                })
+              }}
+              component='li'
+              {...optionProps}
+            >
+              {ownerState.getOptionLabel(option)}
+            </Box>
+          );
         }
       }
     }
