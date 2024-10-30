@@ -5,3 +5,5 @@ services:
       dockerfile: Dockerfile.prod
     ports:
       - '8080:3000'
+    env_file:
+      - .env
