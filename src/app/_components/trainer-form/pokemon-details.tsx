@@ -43,8 +43,14 @@ export const PokemonDetails = ({ pokemonId = '' }: Props) => {
             : error?.message || "Couldn't fetch the pokemon, try again"}
         </Typography>
       ) : (
-        <Grid2 container>
-          <Grid2 size={6}>
+        <Grid2
+          container
+          width='100%'
+          gap='24px'
+          direction='row'
+          justifyContent='center'
+        >
+          <Grid2 size={5}>
             <Image
               src={pokemon.sprites.front_default}
               alt={pokemon.name}
@@ -53,7 +59,7 @@ export const PokemonDetails = ({ pokemonId = '' }: Props) => {
             />
           </Grid2>
           <Grid2
-            size={6}
+            size={5}
             sx={{
               display: 'flex',
               flexDirection: 'column',

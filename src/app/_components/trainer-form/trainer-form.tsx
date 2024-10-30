@@ -79,7 +79,7 @@ export const TrainerForm = () => {
         </Paper>
 
         <Box display='flex' gap='16px' ml='auto'>
-          <Button color='soft' type='reset'>
+          <Button color='soft' type='reset' onClick={() => form.reset()}>
             Reset
           </Button>
           <Button type='submit' color='primary'>
@@ -90,7 +90,7 @@ export const TrainerForm = () => {
 
       <SuccessModal
         open={form.formState.isSubmitSuccessful}
-        onClose={() => form.reset()}
+        onClose={form.reset}
       />
     </form>
   );
