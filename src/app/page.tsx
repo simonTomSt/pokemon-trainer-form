@@ -1,5 +1,10 @@
+import { Suspense } from 'react';
 import { Box } from '@mui/material';
 import { Paper } from '@/lib/components/paper';
+import {
+  CurrentDateInfo,
+  CurrentDateInfoSkeleton
+} from './_components/current-date-info';
 import { TrainerForm } from './_components/trainer-form/trainer-form';
 
 export default function Home() {
@@ -14,7 +19,13 @@ export default function Home() {
         }}
       >
         <Paper sx={{ maxWidth: '544px', padding: '32px', width: '100%' }}>
-          <TrainerForm />
+          <Box display='grid' gap='24px' width='100%'>
+            <Suspense fallback={<CurrentDateInfoSkeleton />}>
+              <CurrentDateInfo />
+            </Suspense>
+
+            <TrainerForm />
+          </Box>
         </Paper>
       </Box>
     </main>
