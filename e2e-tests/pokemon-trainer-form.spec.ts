@@ -55,6 +55,7 @@ test.describe('Pokemon Trainer Form', () => {
     await page.getByRole('button', { name: 'Reset form' }).click();
     await expect(page.getByPlaceholder("Trainer's name")).toHaveValue('');
     await expect(page.getByPlaceholder("Trainer's age")).toHaveValue('');
+    await expect(page.getByPlaceholder('Choose')).toHaveValue('');
   });
 
   test('should reset form state on Reset button click', async ({ page }) => {
@@ -66,6 +67,7 @@ test.describe('Pokemon Trainer Form', () => {
 
     await expect(page.getByPlaceholder("Trainer's name")).toHaveValue('');
     await expect(page.getByPlaceholder("Trainer's age")).toHaveValue('');
+    await expect(page.getByPlaceholder('Choose')).toHaveValue('');
   });
 
   test('should display different suggestions when typing in the autocomplete', async ({
