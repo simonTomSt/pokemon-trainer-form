@@ -17,7 +17,13 @@ A Next.js app router application for Pokémon Trainer registration.
 
 ### Prerequisites
 
-Ensure you have **pnpm** and **Docker** installed.
+Ensure you have **pnpm** and/or **Docker** installed.
+
+### Env variables
+
+1. Ensure you have **.env** fulfilled with proper env variables!
+
+2. Example envs in **.env.example**
 
 ### Local Development
 
@@ -64,6 +70,12 @@ Ensure you have **pnpm** and **Docker** installed.
    ```bash
    docker-compose -f docker-compose-prod.yml up --build -d
    ```
+
+## FAQ
+
+1. App on prod after running on docker doesn't work why?
+
+   Did you properly changed `NEXT_PUBLIC_URL` according to docker ports config?
 
 ## 💡 Potential Improvements
 
