@@ -15,7 +15,7 @@ export const CurrentDateInfo = async () => {
     .replace(/(\d{1,2})\/(\d{1,2})\/(\d{4})/, '$1.$2.$3');
 
   return (
-    <Typography variant='subtitle1' ml='auto'>
+    <Typography variant='subtitle1' ml='auto' data-testid='current-date'>
       {formattedDate}
     </Typography>
   );

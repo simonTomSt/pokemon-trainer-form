@@ -44,7 +44,7 @@ const SuccessModal = ({ open, onClose }: Props) => {
         >
           Success
         </Typography>
-        <Button onClick={onClose}>Reset Form</Button>
+        <Button onClick={() => onClose()}>Reset Form</Button>
       </ModalContent>
     </Modal>
   );

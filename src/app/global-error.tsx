@@ -1,7 +1,7 @@
 'use client';
 
-import { Button } from '@/lib/components/button';
 import { Box, Typography } from '@mui/material';
+import { Button } from '@/lib/components/button';
 
 export default function GlobalError({
   error,

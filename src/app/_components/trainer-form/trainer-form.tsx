@@ -1,4 +1,5 @@
 'use client';
+import dynamic from 'next/dynamic';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Grid2 } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -10,7 +11,6 @@ import { Label } from '@/lib/components/label';
 import { Paper } from '@/lib/components/paper';
 import { PokemonAutocomplete } from './pokemon-autocomplete';
 import { PokemonDetails } from './pokemon-details';
-import dynamic from 'next/dynamic';
 
 const SuccessModal = dynamic(() => import('./success-modal'));
 
@@ -90,7 +90,7 @@ export const TrainerForm = () => {
 
       <SuccessModal
         open={form.formState.isSubmitSuccessful}
-        onClose={form.reset}
+        onClose={() => form.reset()}
       />
     </form>
   );
