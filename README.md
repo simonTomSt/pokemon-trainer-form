@@ -71,6 +71,20 @@ Ensure you have **pnpm** and/or **Docker** installed.
    docker-compose -f docker-compose-prod.yml up --build -d
    ```
 
+### E2E Tests
+
+1. Run:
+
+   ```bash
+   pnpm dev
+   ```
+
+2. Run:
+
+   ```bash
+   pnpm test:e2e
+   ```
+
 ## FAQ
 
 1. App on prod after running on docker doesn't work why?
